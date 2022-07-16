@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "build": "antlr4 sourscript.g4 -o .java & javac .java/*.java",
+    "test": "cd ./.java & grun sourscript script -gui ../samples/syntax.ss"
+  }
+}
