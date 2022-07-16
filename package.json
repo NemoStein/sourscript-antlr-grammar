@@ -1,6 +1,13 @@
 {
+  "name": "sourscript-antlr-grammar",
   "scripts": {
     "build": "antlr4 sourscript.g4 -o .java & javac .java/*.java",
     "test": "cd ./.java & grun sourscript script -gui ../samples/syntax.ss"
+  },
+  "license": "cc-by-sa-4.0",
+  "author": "NemoStein <contato@nemostein.com.br> (http://nemostein.com.br)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NemoStein/sourscript-antlr-grammar.git"
   }
 }
