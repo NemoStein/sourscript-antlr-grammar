@@ -14,7 +14,8 @@ d = void // Void
 e1 = [0 false '']
 e2 = [0, false, '']
 
-// Numeric list can be created with the Range operator
+// Range
+// Numeric list can be created with the range operator
 // The left and right values are included
 // The left value can be larger than the right, resulting in a reversed order list
 e3 = 0..10
@@ -27,6 +28,19 @@ e5 = (z + 1) .. 0
 f1 = x -> x ** 2
 f2 = (x y z) -> x * (y + z)
 f3 = (x, y, z) -> { x < y + z }
+
+// The exit statement can be used to return early from a function
+// The next expression after the `exit` keyword will be used as return value
+f4 = (x, y, z) -> if (x < y) exit z
+
+// The void primitive can be used to signal an empty result
+f5 = (x, y, z) -> {
+  if (x != y) {
+    exit void
+  }
+
+  z
+}
 
 // Function call
 // Note that only identifiers, bare (`func()`) or qualified (`map.func()`, `list[0]()`), can be called
@@ -53,24 +67,37 @@ g = {
 
 // Flow Control
 
-// The curly brace pair is a block, not part of the control expression
+// The curly brace pair is a block expression, not part of the control expression
 // This means that 'hello' is exposed as the if value
 h1 = if (a == b) 'hello'
 h2 = if (a == b) {
   'hello'
 }
+h3 = if (a == b) 'hello' else 'bye'
 
 // The loop expression type is always `list`
 i = loop (x in f as i) {
   // x is the current element
   // i is the index (if looping a list) or key (if looping a map)
-  // Also, `i` does not conflit with higher level `i` (the assignment) because of shadowing
+  // Also, local `i` (`as i`) does not conflit with higher level `i` (`i = loop`) because of shadowing
   // Finally, both `in` and `as` statements can be omited if it's value isn't needed
 }
 
 i1 = loop (f) {}
 i2 = loop (x in f) {}
 i3 = loop (f as i) {}
+
+// Skip
+// Inside loop execution expression the `skip` and `skip all` statements can be used to skip the current or all iterations, respectively
+i4 = loop (index in list as value) {
+  // skip even numbers
+  if (value % 2 == 0) skip
+
+  // skip everything after the 10th element
+  if (index == 10) skip all
+
+  value
+}
 
 // Expose identifier `internal`
 // Can be used inside any scope to expose the value to upper scopes
