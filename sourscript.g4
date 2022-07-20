@@ -18,9 +18,11 @@ expression
   | expressionExpose
   | expressionIf
   | expressionLoop
+  | expressionSkip
   | expressionCall
   | expressionAccess
   | expressionFunction
+  | expressionExit
   | expressionList
   | value
   | '(' expression ')'
@@ -31,9 +33,11 @@ expressionAssignment: IDENTIFIER '=' (expression | 'use' STRING);
 expressionExpose: '<:' (expressionAssignment | IDENTIFIER);
 expressionIf: 'if' '(' expression ')' expression ('else' expression)?;
 expressionLoop: 'loop' ('(' (IDENTIFIER 'in')? (IDENTIFIER | NUMBER | expressionList) ('as' IDENTIFIER)? ')')? expression;
+expressionSkip: 'skip' 'all'?;
 expressionAccess: IDENTIFIER ('.' IDENTIFIER | '[' expression ']')*;
 expressionCall: expressionAccess '(' expression* ')';
 expressionFunction: ('(' IDENTIFIER* ')' | IDENTIFIER) '->' expression;
+expressionExit: 'exit' expression?;
 expressionList: '[' (expression)* ']';
 
 value
@@ -43,7 +47,6 @@ value
   | STRING
   | NUMBER
   ;
-
 
 VOID: 'void';
 BOOLEAN: 'true' | 'false';

@@ -23,19 +23,22 @@ The `./samples/syntax.ss` file contains a good reference of how to do basic thin
     * `if ($comparison) $expression else $expression`
   - loop
     * Iterate lists `loop ($iterable) $expression`
-    * Iterate getting the current value `loop ($value in $iterable) $expression`
-    * Iterate getting the current index `loop ($iterable as $key) $expression`
-    * Getting both `loop ($value in $iterable as $key) $expression`
+    * Iterate getting the current index `loop ($key in $iterable) $expression`
+    * Iterate getting the current value `loop ($iterable as $value) $expression`
+    * Getting both `loop ($key in $iterable as $value) $expression`
     * `$iterable` may be a `number`, `list` or a identifier for a value of the aforementioned types
     * When `list` is passed to the loop it will iterate the `list` values
     * When `number` is passed it will iterate the value times
   - skip
+    * Only valid inside loops execution expression
     * Skips the current loop iteration, returning flow control to loop expression
-    * Invalid anywhere except loops execution expression
+    * `loop (list as value) if (value < 5) skip`
+    * `skip all` can be used to skip all remaining iterations
+    * Loops iterations terminated with `skip` don't return any value (not even `void`)
   - exit
-    * Stops the scope execution, returning flow control to upper scope
-    * Inside loops execution expression it stops the loop altogether
-    * Invalid in top-level scopes
+    * In functions it stops the function scope execution, returning flow control to upper scope
+    * The next expression after the `exit` keyword will be used as the function returning value
+    * In top-level scopes it stops current script execution
 
 ### Operator
   - expose
