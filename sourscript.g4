@@ -29,7 +29,7 @@ expression
   ;
 
 expressionBlock: '{' scope '}';
-expressionAssignment: IDENTIFIER '=' (expression | 'use' (IDENTIFIER | STRING));
+expressionAssignment: expressionAccess '=' (expression | 'use' (IDENTIFIER | STRING));
 expressionExpose: '<:' (expressionAssignment | IDENTIFIER);
 expressionIf: 'if' '(' expression ')' expression ('else' expression)?;
 expressionLoop: 'loop' ('(' (IDENTIFIER 'in')? (IDENTIFIER | NUMBER | expressionList) ('as' IDENTIFIER)? ')')? expression;
