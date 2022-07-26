@@ -5,7 +5,6 @@ scope: expression*;
 
 expression
   : ('+' | '-' | '!' | '~') expression
-  | expression '..' expression
   | expression ('**') expression
   | expression ('*' | '/' | '%') expression
   | expression ('+' | '-') expression
@@ -38,7 +37,7 @@ expressionAccess: IDENTIFIER ('.' IDENTIFIER | '[' expression ']')*;
 expressionCall: expressionAccess '(' expression* ')';
 expressionFunction: ('(' IDENTIFIER* ')' | IDENTIFIER) '->' expression;
 expressionExit: 'exit' expression?;
-expressionList: '[' (expression)* ']';
+expressionList: '[' (expression | expression '..' expression)* ']';
 
 value
   : IDENTIFIER

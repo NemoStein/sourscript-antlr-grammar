@@ -18,9 +18,10 @@ e2 = [0, false, '']
 // Numeric list can be created with the range operator
 // The left and right values are included
 // The left value can be larger than the right, resulting in a reversed order list
-e3 = 0..10
-e4 = x .. y
-e5 = (z + 1) .. 0
+e3 = [0..10]
+e4 = [x .. y]
+e5 = [(z + 1) .. 0]
+e6 = [0..5 10..20 50..100]
 
 // Function
 // Same as lists, arguments can also be separated by commas
