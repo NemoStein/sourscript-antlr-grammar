@@ -81,6 +81,27 @@ The `./samples/syntax.ss` file contains a good reference of how to do basic thin
     * Usage of expose operator and blocks can be used to create objects
     * `{ <: x = 0 }`
 
+## Standard Library
+
+The standard library is composed of multiple modules, imported with the `use` operator prefixed with `ss:` protocol.
+
+```
+Collections = use 'ss:Collections'
+
+const set = Collections.Set()
+const map = Collections.Map()
+```
+
+### Modules
+
+Available or planned
+
+- Collections
+- FileSystem
+- Timers
+- JSON
+- XML
+
 ## Testing Samples
 
 Antlr4 was used to write the initial language grammar while a proper parser is written.
