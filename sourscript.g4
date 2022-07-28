@@ -12,6 +12,7 @@ expression
   | expression ('<' | '<=' | '==' | '!=' | '>' | '>=') expression
   | expression ('&' | '|' | '^') expression
   | expression ('&&' | '||') expression
+  | expression '?' expression ':' expression
   | expressionBlock
   | expressionAssignment
   | expressionExpose
