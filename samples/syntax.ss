@@ -77,7 +77,7 @@ h2 = if (a == b) {
 h3 = if (a == b) 'hello' else 'bye'
 
 // The loop expression type is always `list`
-i = loop (x in f as i) {
+i = loop (i in f as x) {
   // x is the current element
   // i is the index (if looping a list) or key (if looping a map)
   // Also, local `i` (`as i`) does not conflit with higher level `i` (`i = loop`) because of shadowing
