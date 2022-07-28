@@ -94,13 +94,7 @@ const map = Collections.Map()
 
 ### Modules
 
-Available or planned
-
-- Collections
-- FileSystem
-- Timers
-- JSON
-- XML
+> See [StadardLibrary.md](./StadardLibrary.md)
 
 ## Testing Samples
 
