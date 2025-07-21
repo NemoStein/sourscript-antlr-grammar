@@ -13,9 +13,13 @@ Toy lang for game embedding
 
 ## Syntax
 
-> See `./samples` folder for examples
+The `sourscript.bnf` describes the syntax in Antlr4 format (a RegExp-like EBNF)
 
 The `./samples/syntax.ss` file contains a good reference of how to do basic things in Sourscript
+
+> See `./samples` folder for more examples
+
+_The section below may be outdated_
 
 ### Flow Control
   - if
@@ -95,14 +99,3 @@ const map = Collections.Map()
 ### Modules
 
 > See [StadardLibrary.md](./StadardLibrary.md)
-
-## Testing Samples
-
-Antlr4 was used to write the initial language grammar while a proper parser is written.
-
-Run `npm run build` to build the antlr java parser
-
-The `./samples/syntax.ss` can be tested with `npm test`
-
-Note that both `antlr4` and `grun` must be on path!  
-See [Antlr4 docs](https://www.antlr.org/) to know how to set up your environment.

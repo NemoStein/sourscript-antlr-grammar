@@ -1,16 +1,12 @@
-grammar sourscript;
-
-script: scope EOF;
+sourscript: scope EOF;
 scope: expression*;
 
 expression
-  : ('+' | '-' | '!' | '~') expression
+  : ('+' | '-' | '!' ) expression
   | expression ('**') expression
   | expression ('*' | '/' | '%') expression
   | expression ('+' | '-') expression
-  | expression ('<<' | '>>') expression
   | expression ('<' | '<=' | '==' | '!=' | '>' | '>=') expression
-  | expression ('&' | '|' | '^') expression
   | expression ('&&' | '||') expression
   | expression '?' expression ':' expression
   | expressionBlock
@@ -62,6 +58,6 @@ NUMBER_HEX: '0' [xX] [0-9a-fA-F]+;
 
 IDENTIFIER: [_$a-zA-Z][_$a-zA-Z0-9]*;
 
-WS: [ \t\r\n,]+ -> skip;
-COMMENT_BLOCK: '/*' .*? '*/' -> skip;
-COMMENT_LINE: '//' ~[\r\n]* -> skip;
+WS: [ \t\r\n,]+;
+COMMENT_BLOCK: '/*' .*? '*/';
+COMMENT_LINE: '//' ~[\r\n]*;

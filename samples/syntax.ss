@@ -23,6 +23,29 @@ e4 = [x .. y]
 e5 = [(z + 1) .. 0]
 e6 = [0..5 10..20 50..100]
 
+// Scope Block
+// Anything declared inside this container won't be accessible outside
+block = {
+  // Any number of expressions can go inside
+  // Last expression is exposed as block expression value
+  0
+}
+
+// Concat Scopes
+concat = {
+  <: a = 1
+} + {
+  <: b = 2
+}
+// concat.a == 1
+// concat.b == 2
+
+blockA = { <: a = 1 }
+blockB = { <: b = 2 }
+blockC = a + b
+// blockC.a == 1
+// blockC.b == 2
+
 // Function
 // Same as lists, arguments can also be separated by commas
 // Parentheses are optional for functions with a single argument
@@ -50,20 +73,13 @@ x2 = f(1, 2, 3)
 x3 = map.func()
 x4 = list[0]()
 
-// Map
-// The expose operator can be use to construct objects from scopes
+// (Hash)Map / Dictionary
+// The `expose` operator can be use to construct objects from scope blocks
 g = {
   <: x = 1
   y = 2
   <: y
   <: z = x + y
-}
-
-// Scope Block
-{
-  // Any number of expressions can go inside
-  // Last expression is exposed as block expression value
-  0
 }
 
 // Flow Control
@@ -80,13 +96,13 @@ h3 = if (a == b) 'hello' else 'bye'
 i = loop (i in f as x) {
   // x is the current element
   // i is the index (if looping a list) or key (if looping a map)
-  // Also, local `i` (`as i`) does not conflit with higher level `i` (`i = loop`) because of shadowing
+  // Also, local `i` (`i in ...`) does not conflit with higher level `i` (`i = loop (...)`) because of shadowing
   // Finally, both `in` and `as` statements can be omited if it's value isn't needed
 }
 
 i1 = loop (f) {}
-i2 = loop (x in f) {}
-i3 = loop (f as i) {}
+i2 = loop (i in f) {}
+i3 = loop (f as x) {}
 
 // Skip
 // Inside loop execution expression the `skip` and `skip all` statements can be used to skip the current or all iterations, respectively

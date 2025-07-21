@@ -1,3 +1,0 @@
-# Ignore dotfiles, except git related
-.*
-!.git*
